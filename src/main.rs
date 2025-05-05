@@ -59,7 +59,28 @@ fn test_binary_search_tree(){
     }
 
     //print the tree at this time
-    let main_tree_path = "bst_graph.dot";
+    let mut main_tree_path = "bst_graph.dot";
+    generate_dotfile_bst(&rootlink, main_tree_path);
+
+    // TEST AREA
+    let mut x = BstNode::tree_insert(&rootlink, 19);
+    let mut x = BstNode::tree_insert(&rootlink, 50);
+    let mut x = BstNode::tree_insert(&rootlink, 60);
+    let mut x = BstNode::tree_insert(&rootlink, 30);
+    let mut x = BstNode::tree_insert(&rootlink, 35);
+    
+    main_tree_path = "bst_graph_2.dot";
+    generate_dotfile_bst(&rootlink, main_tree_path);
+    
+    // delete a leaf node
+    BstNode::tree_delete(&rootlink, 4);
+    BstNode::tree_delete(&rootlink, 35);
+    main_tree_path = "bst_graph_3.dot";
+    generate_dotfile_bst(&rootlink, main_tree_path);
+
+    // delete node with 1 child
+    BstNode::tree_delete(&rootlink, 7);
+    main_tree_path = "bst_graph_4.dot";
     generate_dotfile_bst(&rootlink, main_tree_path);
 
     //tree search test
